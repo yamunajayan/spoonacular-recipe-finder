@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Hero from "../components/Hero";
 import axios from "axios";
+import RecipeList from "../components/RecipeList";
 const HomePage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -44,14 +45,13 @@ const HomePage = () => {
         cuisine={cuisine}
         setCuisine={setCuisine}
       />
-      <ul className="grid grid-cols-2 gap-4">
-        {recipes.map((recipe: any) => (
-          <li key={recipe.id}>
-            <img src={recipe.image} alt={recipe.title} />
-            <h2>{recipe.title}</h2>
-          </li>
-        ))}
-      </ul>
+      <article className="text-red-500 flex flex-col items-center p-4">
+        {loading && <p>Loading recipes...</p>}
+
+        {error && <p className="text-red-500">{error}</p>}
+
+        {!loading && !error && <RecipeList recipes={recipes} />}
+      </article>
     </main>
   );
 };
