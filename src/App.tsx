@@ -1,10 +1,12 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 function App() {
   return (
-    <>
-      <main className="container">
-        <h1>Medavie Recipe App</h1>
-      </main>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
