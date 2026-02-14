@@ -1,9 +1,9 @@
-import "./App.css";
-
 function App() {
   return (
     <>
-      <h1>Medavie Recipe App</h1>
+      <main className="container">
+        <h1>Medavie Recipe App</h1>
+      </main>
     </>
   );
 }
