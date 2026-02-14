@@ -1,12 +1,21 @@
-import { useState } from "react";
+type HeroProps = {
+  query: string;
+  setQuery: (value: string) => void;
+  cuisine: string;
+  setCuisine: (value: string) => void;
+  onSearch: () => void;
+};
 
-const Hero = () => {
-  const [query, setQuery] = useState("");
-  const [cuisine, setCuisine] = useState("");
-
+const Hero = ({
+  query,
+  setQuery,
+  cuisine,
+  setCuisine,
+  onSearch,
+}: HeroProps) => {
   const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(query, cuisine);
+    onSearch();
   };
 
   return (
