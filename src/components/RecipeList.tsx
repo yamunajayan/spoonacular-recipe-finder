@@ -1,3 +1,5 @@
+import RecipeCard from "./RecipeCard";
+
 type Recipe = {
   id: number;
   title: string;
@@ -7,15 +9,9 @@ type Recipe = {
 const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
   return (
     <section>
-      <ul className="flex flex-col gap-4 mx-auto">
+      <ul className="grid grid-cols-1 gap-4 mx-auto md:grid-cols-2">
         {recipes.map((recipe: Recipe) => (
-          <li
-            key={recipe.id}
-            className="flex flex-col items-center justify-center p-4 bg-white rounded-md shadow"
-          >
-            <h2 className="text-center">{recipe.title}</h2>
-            <img src={recipe.image} alt={recipe.title} />
-          </li>
+          <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </ul>
     </section>
