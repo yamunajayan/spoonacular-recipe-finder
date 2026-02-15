@@ -9,6 +9,15 @@ export const spoonacular = axios.create({
   },
 });
 
+type Step = {
+  number: number;
+  step: string;
+};
+
+type Instruction = {
+  steps: Step[];
+};
+
 export type RecipeDetail = {
   id: number;
   title: string;
@@ -23,8 +32,9 @@ export type RecipeDetail = {
     original: string;
     amount: number;
     unit: string;
+    originalName: string;
   }>;
-  instructions: string;
+  instructions: Instruction[];
 };
 
 export async function getRecipeDetail(id: number): Promise<RecipeDetail> {

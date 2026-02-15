@@ -35,8 +35,11 @@ const RecipeDetailPage = () => {
         <h2>Ingredients</h2>
         <ul>
           {recipe.extendedIngredients.map((ingredient) => (
-            <li key={ingredient.id} className="flex gap-4">
-              <p>{ingredient.name} :</p>
+            <li
+              key={`${ingredient.id}-${ingredient.original}`}
+              className="flex gap-4"
+            >
+              <p>{ingredient.originalName} :</p>
               <div className="flex gap-1">
                 <p>{ingredient.amount}</p>
                 <p>{ingredient.unit}</p>
