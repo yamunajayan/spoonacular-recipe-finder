@@ -52,14 +52,41 @@ export type RecipeDetail = {
 
 export async function searchRecipes(
   query: string,
-  cuisine?: string
+  cuisine?: string,
+  page = 1
 ): Promise<ComplexSearchData> {
+  const pageSize = 5;
+  const q = query.trim();
+  const c = cuisine?.trim() || undefined;
+
+  if (!q) {
+    return { results: [], offset: 0, number: pageSize, totalResults: 0 };
+  }
+  const offset = (page - 1) * pageSize;
+
+  const key = `recipes:${q}:${c || "all"}:page:${page}`;
+
+  // 1) Try cache first
+  const cached = sessionStorage.getItem(key);
+  if (cached) {
+    return JSON.parse(cached);
+  }
+
+  const params: Record<string, string | number> = {
+    query: q,
+    number: pageSize,
+    offset,
+  };
+  if (c) params.cuisine = c;
+
+  // 2) Call API
   const res = await spoonacular.get<ComplexSearchData>(
     "/recipes/complexSearch",
-    {
-      params: { query, cuisine, number: 5 },
-    }
+    { params }
   );
+
+  // 3) Save result
+  sessionStorage.setItem(key, JSON.stringify(res.data));
   return res.data;
 }
 
