@@ -34,7 +34,7 @@ export type RecipeDetail = {
     unit: string;
     originalName: string;
   }>;
-  instructions: Instruction[];
+  analyzedInstructions: Instruction[];
 };
 
 export async function getRecipeDetail(id: number): Promise<RecipeDetail> {

@@ -32,7 +32,15 @@ const RecipeDetailPage = () => {
       <h1>{recipe.title}</h1>
       <img src={recipe.image} alt={recipe.title} />
       <section>
+        <h2>Health Instructions</h2>
+        <p>Vegetarian: {recipe.vegetarian ? "Yes" : "No"}</p>
+        <p>Gluten Free: {recipe.glutenFree ? "Yes" : "No"}</p>
+        <p>Dairy Free: {recipe.dairyFree ? "Yes" : "No"}</p>
+        <p>Vegan: {recipe.vegan ? "Yes" : "No"}</p>
+      </section>
+      <section>
         <h2>Ingredients</h2>
+
         <ul>
           {recipe.extendedIngredients.map((ingredient) => (
             <li
@@ -47,6 +55,20 @@ const RecipeDetailPage = () => {
             </li>
           ))}
         </ul>
+      </section>
+      <section>
+        <h2>Cooking Instructions</h2>
+        <ol>
+          {recipe.analyzedInstructions
+            .flatMap((i) => i.steps)
+            .map((step) => (
+              <li key={step.number}>
+                <p>
+                  {step.number}. {step.step}
+                </p>
+              </li>
+            ))}
+        </ol>
       </section>
     </main>
   );
