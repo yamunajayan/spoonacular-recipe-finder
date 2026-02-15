@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { getRecipeDetail } from "../services/spoonacular";
 import type { RecipeDetail } from "../services/spoonacular";
+import HealthInformation from "../components/HealthInformation";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();
@@ -29,15 +30,16 @@ const RecipeDetailPage = () => {
 
   return (
     <main>
-      <h1>{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} />
-      <section>
-        <h2>Health Instructions</h2>
-        <p>Vegetarian: {recipe.vegetarian ? "Yes" : "No"}</p>
-        <p>Gluten Free: {recipe.glutenFree ? "Yes" : "No"}</p>
-        <p>Dairy Free: {recipe.dairyFree ? "Yes" : "No"}</p>
-        <p>Vegan: {recipe.vegan ? "Yes" : "No"}</p>
+      <section className="flex flex-col items-center bg-red-900 px-4 py-12 ">
+        <h1 className="text-white">{recipe.title}</h1>
+        <img
+          src={recipe.image}
+          alt={recipe.title}
+          className="rounded-lg object-cover shadow lg:w-1/2"
+        />
       </section>
+      <HealthInformation recipe={recipe} />
+
       <section>
         <h2>Ingredients</h2>
 
