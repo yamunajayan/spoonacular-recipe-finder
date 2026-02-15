@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getRecipeDetail } from "../services/spoonacular";
 import type { RecipeDetail } from "../services/spoonacular";
 import HealthInformation from "../components/HealthInformation";
+import IngredientsList from "../components/IngredientsList";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();
@@ -39,25 +40,8 @@ const RecipeDetailPage = () => {
         />
       </section>
       <HealthInformation recipe={recipe} />
+      <IngredientsList recipe={recipe} />
 
-      <section>
-        <h2>Ingredients</h2>
-
-        <ul>
-          {recipe.extendedIngredients.map((ingredient) => (
-            <li
-              key={`${ingredient.id}-${ingredient.original}`}
-              className="flex gap-4"
-            >
-              <p>{ingredient.originalName} :</p>
-              <div className="flex gap-1">
-                <p>{ingredient.amount}</p>
-                <p>{ingredient.unit}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </section>
       <section>
         <h2>Cooking Instructions</h2>
         <ol>
