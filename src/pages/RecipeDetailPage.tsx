@@ -4,10 +4,10 @@ import { getRecipeDetail } from "../services/spoonacular";
 import type { RecipeDetail } from "../services/spoonacular";
 import HealthInformation from "../components/HealthInformation";
 import IngredientsList from "../components/IngredientsList";
+import CookingInstructionsList from "../components/CookingInstructionsList";
 
 const RecipeDetailPage = () => {
   const { id } = useParams();
-
   const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
 
   useEffect(() => {
@@ -41,21 +41,7 @@ const RecipeDetailPage = () => {
       </section>
       <HealthInformation recipe={recipe} />
       <IngredientsList recipe={recipe} />
-
-      <section>
-        <h2>Cooking Instructions</h2>
-        <ol>
-          {recipe.analyzedInstructions
-            .flatMap((i) => i.steps)
-            .map((step) => (
-              <li key={step.number}>
-                <p>
-                  {step.number}. {step.step}
-                </p>
-              </li>
-            ))}
-        </ol>
-      </section>
+      <CookingInstructionsList recipe={recipe} />
     </main>
   );
 };
