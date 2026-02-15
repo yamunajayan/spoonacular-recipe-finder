@@ -11,7 +11,6 @@ const HomePage = () => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const handleSearch = async () => {
     if (!query.trim()) {
-      console.log("Enter a search term");
       return;
     }
 
@@ -27,8 +26,6 @@ const HomePage = () => {
 
       const res = await axios.get(url);
       setRecipes(res.data.results);
-
-      console.log(res.data.results);
     } catch (error) {
       console.log(error);
       setError("Something went wrong");
