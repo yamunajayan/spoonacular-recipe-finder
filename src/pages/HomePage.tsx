@@ -2,30 +2,25 @@ import { useState } from "react";
 import Hero from "../components/Hero";
 import axios from "axios";
 import RecipeList from "../components/RecipeList";
+import { searchRecipes } from "../services/spoonacular";
+import type { Recipe } from "../services/spoonacular";
+
 const HomePage = () => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [query, setQuery] = useState("");
   const [cuisine, setCuisine] = useState("");
-  const apiKey = import.meta.env.VITE_API_KEY;
   const handleSearch = async () => {
     if (!query.trim()) {
       return;
     }
-
     try {
       setLoading(true);
       setError(null);
-
-      const url =
-        `https://api.spoonacular.com/recipes/complexSearch?apiKey=${apiKey}` +
-        `&query=${encodeURIComponent(query)}` +
-        (cuisine ? `&cuisine=${encodeURIComponent(cuisine)}` : "") +
-        `&number=5`;
-
-      const res = await axios.get(url);
-      setRecipes(res.data.results);
+      const data = await searchRecipes(query, cuisine);
+      setRecipes(data.results);
+      console.log(data);
     } catch (error) {
       console.log(error);
       setError("Something went wrong");
@@ -33,6 +28,7 @@ const HomePage = () => {
       setLoading(false);
     }
   };
+
   return (
     <main>
       <Hero

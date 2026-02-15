@@ -9,6 +9,19 @@ export const spoonacular = axios.create({
   },
 });
 
+export type Recipe = {
+  id: number;
+  title: string;
+  image: string;
+};
+
+type ComplexSearchData = {
+  results: Recipe[];
+  offset: number;
+  number: number;
+  totalResults: number;
+};
+
 type Step = {
   number: number;
   step: string;
@@ -36,6 +49,19 @@ export type RecipeDetail = {
   }>;
   analyzedInstructions: Instruction[];
 };
+
+export async function searchRecipes(
+  query: string,
+  cuisine?: string
+): Promise<ComplexSearchData> {
+  const res = await spoonacular.get<ComplexSearchData>(
+    "/recipes/complexSearch",
+    {
+      params: { query, cuisine, number: 5 },
+    }
+  );
+  return res.data;
+}
 
 export async function getRecipeDetail(id: number): Promise<RecipeDetail> {
   const res = await spoonacular.get(`/recipes/${id}/information`, {
