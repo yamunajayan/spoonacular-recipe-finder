@@ -28,10 +28,24 @@ const RecipeDetailPage = () => {
   }
 
   return (
-    <div>
-      <h1>Recipe Detail Page</h1>
-      <h2>{recipe.title}</h2>
-    </div>
+    <main>
+      <h1>{recipe.title}</h1>
+      <img src={recipe.image} alt={recipe.title} />
+      <section>
+        <h2>Ingredients</h2>
+        <ul>
+          {recipe.extendedIngredients.map((ingredient) => (
+            <li key={ingredient.id} className="flex gap-4">
+              <p>{ingredient.name} :</p>
+              <div className="flex gap-1">
+                <p>{ingredient.amount}</p>
+                <p>{ingredient.unit}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
   );
 };
 
