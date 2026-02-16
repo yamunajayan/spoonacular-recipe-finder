@@ -1,4 +1,4 @@
-import { CUISINES } from "../constants/cuisines";
+import SelectDropDown from "./SelectDropDown";
 
 type HeroProps = {
   query: string;
@@ -45,18 +45,7 @@ const Hero = ({
             Search
           </button>
         </div>
-        <select
-          value={cuisine}
-          onChange={(e) => setCuisine(e.target.value)}
-          className="border border-gray-300 rounded-md px-2 py-1 bg-white"
-        >
-          <option value="">All cuisines</option>
-          {CUISINES.map((cuisine) => (
-            <option key={cuisine} value={cuisine}>
-              {cuisine}
-            </option>
-          ))}
-        </select>
+        <SelectDropDown cuisine={cuisine} setCuisine={setCuisine} />
       </form>
     </section>
   );
