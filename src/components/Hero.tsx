@@ -1,3 +1,5 @@
+import SelectDropDown from "./SelectDropDown";
+
 type HeroProps = {
   query: string;
   setQuery: (value: string) => void;
@@ -43,18 +45,7 @@ const Hero = ({
             Search
           </button>
         </div>
-        <select
-          value={cuisine}
-          onChange={(e) => setCuisine(e.target.value)}
-          className="border border-gray-300 rounded-md px-2 py-1 bg-white"
-        >
-          <option value="">All cuisines</option>
-          <option value="italian">Italian</option>
-          <option value="mexican">Mexican</option>
-          <option value="indian">Indian</option>
-          <option value="chinese">Chinese</option>
-          <option value="thai">Thai</option>
-        </select>
+        <SelectDropDown cuisine={cuisine} setCuisine={setCuisine} />
       </form>
     </section>
   );
