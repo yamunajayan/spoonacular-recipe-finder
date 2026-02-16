@@ -9,7 +9,7 @@ type Recipe = {
 const RecipeList = ({ recipes }: { recipes: Recipe[] }) => {
   return (
     <section>
-      <ul className="grid grid-cols-1 gap-4 mx-auto md:grid-cols-2">
+      <ul className="grid grid-cols-1 gap-4 mx-auto md:grid-cols-2 py-8">
         {recipes.map((recipe: Recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}

@@ -87,3 +87,7 @@ p {
   font-weight: var(--font-weight-body);
   line-height: var(--line-height-p);
 }
+
+button:hover {
+  cursor: pointer;
+}
