@@ -1,3 +1,5 @@
+import { CUISINES } from "../constants/cuisines";
+
 type HeroProps = {
   query: string;
   setQuery: (value: string) => void;
@@ -49,11 +51,11 @@ const Hero = ({
           className="border border-gray-300 rounded-md px-2 py-1 bg-white"
         >
           <option value="">All cuisines</option>
-          <option value="italian">Italian</option>
-          <option value="mexican">Mexican</option>
-          <option value="indian">Indian</option>
-          <option value="chinese">Chinese</option>
-          <option value="thai">Thai</option>
+          {CUISINES.map((cuisine) => (
+            <option key={cuisine} value={cuisine}>
+              {cuisine}
+            </option>
+          ))}
         </select>
       </form>
     </section>
