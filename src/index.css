@@ -88,8 +88,6 @@ p {
   line-height: var(--line-height-p);
 }
 
-button {
-  hover {
-    cursor: pointer;
-  }
+button:hover {
+  cursor: pointer;
 }
