@@ -4,10 +4,12 @@ import Hero from "../components/Hero";
 import RecipeList from "../components/RecipeList";
 import { searchRecipes } from "../services/spoonacular";
 import type { Recipe } from "../services/spoonacular";
+import Pagination from "../components/Pagination";
 const PAGE_SIZE = 5;
 
 const HomePage = () => {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
+  const [totalResults, setTotalResults] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -42,6 +44,7 @@ const HomePage = () => {
           page
         );
         setRecipes(data.results);
+        setTotalResults(data.totalResults);
         console.log(data);
       } catch (error) {
         console.log(error);
@@ -81,7 +84,22 @@ const HomePage = () => {
 
         {error && <p className="text-red-500">{error}</p>}
 
-        {!loading && !error && <RecipeList recipes={recipes} />}
+        {!loading && !error && (
+          <>
+            <RecipeList recipes={recipes} />
+            <Pagination
+              page={page}
+              totalPages={Math.ceil(totalResults / PAGE_SIZE)}
+              onPageChange={(nextPage) =>
+                setSearchParams({
+                  query: urlQuery,
+                  page: String(nextPage), // URL must be string
+                  ...(urlCuisine ? { cuisine: urlCuisine } : {}),
+                })
+              }
+            />
+          </>
+        )}
       </article>
     </main>
   );
