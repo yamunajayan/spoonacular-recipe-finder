@@ -16,7 +16,7 @@ const RecipeList = ({
   cuisine: string;
 }) => {
   const noResultsMessage = () => {
-    if (recipes.length > 0) return null;
+    if (recipes.length > 0 || !query) return null;
 
     if (cuisine && query)
       return `No recipes found for "${query}" in ${cuisine} cuisine. Try different cuisine.`;

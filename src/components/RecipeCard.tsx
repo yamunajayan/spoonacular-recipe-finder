@@ -31,7 +31,9 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
         alt={recipe.title}
         className="w-full h-72 rounded-md object-cover shadow"
       />
-      <h3 className="text-center text-red-900">{recipe.title}</h3>
+      <h3 className="text-center text-green-900! text-lg! text-bold">
+        {recipe.title}
+      </h3>
     </li>
   );
 };
