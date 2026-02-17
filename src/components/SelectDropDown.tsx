@@ -5,6 +5,7 @@ type DropDownProps = {
   cuisine: string;
   setCuisine: (cuisine: string) => void;
 };
+
 const SelectDropDown = ({ cuisine, setCuisine }: DropDownProps) => {
   return (
     <div>
