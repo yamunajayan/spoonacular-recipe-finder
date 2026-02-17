@@ -31,7 +31,7 @@ const RecipeDetailPage = () => {
 
   return (
     <main>
-      <section className="flex flex-col items-center bg-red-900 px-4 py-12 ">
+      <section className="flex flex-col items-center bg-red-200 px-4 py-12 ">
         <h1 className="text-white">{recipe.title}</h1>
         <img
           src={recipe.image}

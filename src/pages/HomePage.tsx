@@ -79,7 +79,7 @@ const HomePage = () => {
         cuisine={cuisine}
         setCuisine={setCuisine}
       />
-      <article className="text-red-800 flex flex-col items-center p-4">
+      <article className="text-red-800 flex flex-col items-center p-4 md:p-8 mt-4 gap-4">
         {loading && <p>Loading recipes...</p>}
 
         {error && <p className="text-red-800">{error}</p>}

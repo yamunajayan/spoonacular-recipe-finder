@@ -28,7 +28,7 @@ const Hero = ({
   };
 
   return (
-    <section className="bg-linear-to-b from-red-900 to-red-800 flex flex-col items-center px-4 py-8 md:py-16">
+    <section className="bg-linear-to-b from-red-300 to-red-100 flex flex-col items-center px-4 py-8 md:py-16">
       <h1 className="text-white">Recipe Search</h1>
       <p className="text-white">Find delicious recipes</p>
 
@@ -52,7 +52,7 @@ const Hero = ({
               setQuery(e.target.value);
               if (error) setError("");
             }}
-            className="border border-gray-300 rounded-md px-4 py-2 bg-white grow"
+            className="border-2 border-gray-300 rounded-md px-4 py-2 bg-white grow hover:border-2 hover:border-red-800 cursor-pointer"
           />
 
           <button

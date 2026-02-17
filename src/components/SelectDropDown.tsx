@@ -12,7 +12,7 @@ const SelectDropDown = ({ cuisine, setCuisine }: DropDownProps) => {
         <Dropdown.Toggle
           variant="outline-secondary"
           id="dropdown-cuisine"
-          className="border-gray-300 bg-white text-gray-800 hover:bg-gray-200"
+          className="border-gray-300 bg-white text-gray-800 hover:bg-gray-200 hover:text-black!"
         >
           {cuisine || "All cuisines"}
         </Dropdown.Toggle>

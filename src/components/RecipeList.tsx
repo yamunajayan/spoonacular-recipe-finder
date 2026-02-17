@@ -29,7 +29,7 @@ const RecipeList = ({
       {recipes.length === 0 ? (
         <p className="text-center py-8">{noResultsMessage()}</p>
       ) : (
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-12">
           <h2 className="text-center py-8 ">
             Recipes for "{query}" {cuisine && `in ${cuisine} cuisine`}
           </h2>
