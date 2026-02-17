@@ -10,7 +10,7 @@ const Header = () => {
           onClick={() => navigate("/")}
         >
           <img
-            src="/recipes4you-logo.svg"
+            src={`${import.meta.env.BASE_URL}recipes4you-logo.svg`}
             alt="recipe 4 you logo"
             className="w-8"
           />
