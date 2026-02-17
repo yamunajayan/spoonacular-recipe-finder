@@ -16,7 +16,7 @@ const HomePage = () => {
   const [query, setQuery] = useState("");
   const [cuisine, setCuisine] = useState("");
 
-  // URL params (source of truth for "current search")
+  // URL params (source of truth )
   const [searchParams, setSearchParams] = useSearchParams();
 
   const urlQuery = (searchParams.get("query") ?? "").trim();
@@ -26,7 +26,6 @@ const HomePage = () => {
   useEffect(() => {
     if (!urlQuery) {
       setRecipes([]);
-      console.log("no query");
       return;
     }
 
@@ -45,9 +44,7 @@ const HomePage = () => {
         );
         setRecipes(data.results);
         setTotalResults(data.totalResults);
-        console.log(data);
       } catch (error) {
-        console.log(error);
         setError("Something went wrong");
       } finally {
         setLoading(false);
@@ -97,7 +94,7 @@ const HomePage = () => {
               onPageChange={(nextPage) =>
                 setSearchParams({
                   query: urlQuery,
-                  page: String(nextPage), // URL must be string
+                  page: String(nextPage),
                   ...(urlCuisine ? { cuisine: urlCuisine } : {}),
                 })
               }

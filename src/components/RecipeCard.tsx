@@ -16,7 +16,6 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
       .trim()
       .replace(/\s+/g, "-");
   const handleClick = (id: number, title: string) => {
-    console.log(title);
     const slug = slugify(title);
     navigate(`/recipe/${id}/${slug}`);
   };

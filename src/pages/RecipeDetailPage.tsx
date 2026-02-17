@@ -16,7 +16,6 @@ const RecipeDetailPage = () => {
       try {
         const res = await getRecipeDetail(Number(id));
         setRecipe(res);
-        console.log(res);
       } catch (error) {
         console.error(error);
       }
