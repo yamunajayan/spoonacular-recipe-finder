@@ -5,8 +5,10 @@ import type { RecipeDetail } from "../services/spoonacular";
 import HealthInformation from "../components/HealthInformation";
 import IngredientsList from "../components/IngredientsList";
 import CookingInstructionsList from "../components/CookingInstructionsList";
+import { useNavigate } from "react-router-dom";
 
 const RecipeDetailPage = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const [recipe, setRecipe] = useState<RecipeDetail | null>(null);
 
@@ -30,13 +32,21 @@ const RecipeDetailPage = () => {
 
   return (
     <main>
-      <section className="flex flex-col items-center bg-red-200 px-4 py-12 ">
-        <h1 className="text-white">{recipe.title}</h1>
-        <img
-          src={recipe.image}
-          alt={recipe.title}
-          className="rounded-lg object-cover shadow lg:w-1/2"
-        />
+      <section className="flex flex-col bg-red-200 px-4 py-2">
+        <button
+          onClick={() => navigate(-1)}
+          className="mb-4 text-red-800 self-start hover:underline"
+        >
+          ← Back
+        </button>
+        <div className="flex flex-col items-center gap-4 py-2 mb-8">
+          <h1 className="text-white">{recipe.title}</h1>
+          <img
+            src={recipe.image}
+            alt={recipe.title}
+            className="rounded-lg object-cover shadow lg:w-1/2"
+          />
+        </div>
       </section>
       <HealthInformation recipe={recipe} />
       <IngredientsList recipe={recipe} />

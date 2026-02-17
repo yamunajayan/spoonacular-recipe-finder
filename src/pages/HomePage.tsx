@@ -88,17 +88,19 @@ const HomePage = () => {
               query={urlQuery}
               cuisine={urlCuisine}
             />
-            <Pagination
-              page={page}
-              totalPages={Math.ceil(totalResults / PAGE_SIZE)}
-              onPageChange={(nextPage) =>
-                setSearchParams({
-                  query: urlQuery,
-                  page: String(nextPage),
-                  ...(urlCuisine ? { cuisine: urlCuisine } : {}),
-                })
-              }
-            />
+            {recipes.length > 0 && totalResults > 1 && (
+              <Pagination
+                page={page}
+                totalPages={Math.ceil(totalResults / PAGE_SIZE)}
+                onPageChange={(nextPage) =>
+                  setSearchParams({
+                    query: urlQuery,
+                    page: String(nextPage),
+                    ...(urlCuisine ? { cuisine: urlCuisine } : {}),
+                  })
+                }
+              />
+            )}
           </>
         )}
       </article>
