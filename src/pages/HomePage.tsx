@@ -67,6 +67,22 @@ const HomePage = () => {
     setSearchParams(params);
   };
 
+  const handleCuisineChange = (newCuisine: string) => {
+    setCuisine(newCuisine); // keeps UI in sync
+
+    const q = urlQuery.trim(); // or query.trim()
+    if (!q) return; // don’t auto-search if there’s no query yet
+
+    const params: Record<string, string> = {
+      query: q,
+      page: "1", // reset page when filter changes
+    };
+
+    if (newCuisine.trim()) params.cuisine = newCuisine.trim();
+
+    setSearchParams(params);
+  };
+
   return (
     <main>
       <Hero
@@ -74,7 +90,7 @@ const HomePage = () => {
         query={query}
         setQuery={setQuery}
         cuisine={cuisine}
-        setCuisine={setCuisine}
+        setCuisine={handleCuisineChange}
       />
       <article className="text-red-800 flex flex-col items-center p-4 md:p-8 mt-4 gap-4">
         {loading && <p>Loading recipes...</p>}
