@@ -28,13 +28,13 @@ const Hero = ({
   };
 
   return (
-    <section className="bg-linear-to-b from-red-900 to-red-800 flex flex-col items-center p-4 md:p-16 lg:px-32">
+    <section className="bg-linear-to-b from-red-900 to-red-800 flex flex-col items-center px-4 py-8 md:py-16">
       <h1 className="text-white">Recipe Search</h1>
       <p className="text-white">Find delicious recipes</p>
 
       <form
         onSubmit={handleSubmit}
-        className="mt-4 flex flex-col gap-1 bg-white p-6 rounded-md w-full md:p-8 lg:w-3/4 shadow"
+        className="mt-4 flex flex-col gap-1 bg-white p-6 rounded-md w-full md:p-8 lg:w-1/2 shadow"
       >
         <div className="h-3">
           {error && <p className="text-red-500 text-sm!">{error}</p>}
@@ -57,7 +57,7 @@ const Hero = ({
 
           <button
             type="submit"
-            className="bg-red-500 text-white px-4 py-2 rounded-md"
+            className="bg-red-800 text-white px-4 py-2 rounded border-2 border-red-800 hover:bg-white hover:text-red-800!"
           >
             Search
           </button>
