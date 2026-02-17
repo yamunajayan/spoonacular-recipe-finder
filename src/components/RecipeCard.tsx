@@ -22,8 +22,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }) => {
   };
   return (
     <li
-      className="flex flex-col items-center justify-between p-4 bg-white rounded-md shadow h-96 max-w-md hover:shadow-rose-500 
-    cursor-pointer"
+      className="flex flex-col items-center justify-between p-4 bg-white border-2 border-amber-50 rounded-md shadow h-96 max-w-md cursor-pointer hover:border-2 hover:border-red-900"
       onClick={() => handleClick(recipe.id, recipe.title)}
     >
       <img
