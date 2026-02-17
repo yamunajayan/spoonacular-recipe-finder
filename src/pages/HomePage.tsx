@@ -79,14 +79,18 @@ const HomePage = () => {
         cuisine={cuisine}
         setCuisine={setCuisine}
       />
-      <article className="text-red-500 flex flex-col items-center p-4">
+      <article className="text-red-800 flex flex-col items-center p-4">
         {loading && <p>Loading recipes...</p>}
 
-        {error && <p className="text-red-500">{error}</p>}
+        {error && <p className="text-red-800">{error}</p>}
 
         {!loading && !error && (
           <>
-            <RecipeList recipes={recipes} />
+            <RecipeList
+              recipes={recipes}
+              query={urlQuery}
+              cuisine={urlCuisine}
+            />
             <Pagination
               page={page}
               totalPages={Math.ceil(totalResults / PAGE_SIZE)}
