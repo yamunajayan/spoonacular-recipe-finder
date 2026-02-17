@@ -1,20 +1,108 @@
+@import "tailwindcss";
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  --font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
 
-  color-scheme: light dark;
-  color: black;
-  background-color: rgba(255, 255, 255, 0.87);
+  --color-primary: #ff6b35;
+  --color-text: #222;
+  --color-muted: #666;
+  --color-bg: #fafafa;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --container-max: 640px;
+  --page-pad: 1rem;
+
+  --h1: 1.75rem;
+  --h2: 1.5rem;
+  --h3: 1.25rem;
+  --p: 1rem;
+
+  --line-height-h1: 1.25;
+  --line-height-h2: 1.25;
+  --line-height-h3: 1.25;
+  --line-height-p: 1.5;
+
+  --font-weight-heading: 600;
+  --font-weight-body: 400;
 }
 
-* {
+/* TABLET */
+@media (min-width: 768px) {
+  :root {
+    --container-max: 900px;
+    --h1: 2rem; /* 32px */
+    --h2: 1.5rem; /* 24px */
+    --page-pad: 1.5rem;
+  }
+}
+
+/* DESKTOP */
+@media (min-width: 1024px) {
+  :root {
+    --container-max: 1100px;
+    --h1: 3.5rem; /* 36px */
+    --h2: 1.75rem; /* 28px */
+    --p: 1.25rem;
+    --page-pad: 2rem;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul,
+ol {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+}
+ul,
+ol {
+  list-style: none;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: var(--page-pad);
+}
+
+h1 {
+  font-size: var(--h1);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h1);
+}
+h2 {
+  font-size: var(--h2);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h2);
+}
+
+h3 {
+  font-size: var(--h3);
+  font-weight: var(--font-weight-heading);
+  line-height: var(--line-height-h3);
+}
+
+p {
+  font-size: var(--p);
+  font-weight: var(--font-weight-body);
+  line-height: var(--line-height-p);
+}
+
+button:hover {
+  cursor: pointer;
 }
